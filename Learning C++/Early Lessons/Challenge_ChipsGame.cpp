@@ -36,10 +36,21 @@ int main() {
 	
 	chipsInPile = (rand() % MAX_CHIPS) + 1;
 	cout << "This round will start with " << chipsInPile << " chips in the pile\n";
+	if(player1Turn) 
+	{
+		cout << playerName[0] << "'s Turn\n";
+	}
+	else
+	{
+		cout << playerName[1] << "'s Turn\n";
+	}
 	maxThisTurn = chipsInPile * MAX_TURN;
-	cout << "You may only take " << maxThisTurn << endl;
-	randomTake = (rand() % maxThisTurn) + 1;
-	cout << "A Random Take of " << randomTake << " chips.\n";
+	cout << "You may only take up to " << maxThisTurn << " chips this turn.\nHow many would you like?\n";
+	cin >> chipsTaken;
+	
+	
+//	randomTake = (rand() % maxThisTurn) + 1;
+//	cout << "A Random Take of " << randomTake << " chips.\n";
 	
 	
 	return 0;
