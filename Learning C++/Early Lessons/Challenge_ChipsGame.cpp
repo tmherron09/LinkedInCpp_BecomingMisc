@@ -16,6 +16,7 @@ int main() {
 	int chipsInPile = 0;
 	int chipsTaken = 0;
 	int maxThisTurn;
+	bool isOneLeft = false;
 	int randomTake;
 	//string playerName[2] = {"Tim", "Magnus"};
 	string playerName[2];
@@ -36,19 +37,66 @@ int main() {
 	
 	chipsInPile = (rand() % MAX_CHIPS) + 1;
 	cout << "This round will start with " << chipsInPile << " chips in the pile\n";
-	if(player1Turn) 
+	
+	
+	while(!gameOver)
 	{
-		cout << playerName[0] << "'s Turn\n";
+		do 
+		{
+			
+			if(player1Turn) 
+			{
+				cout << playerName[0] << "'s Turn\n";
+			}
+			else
+			{
+				cout << playerName[1] << "'s Turn\n";
+			}
+				maxThisTurn = chipsInPile * MAX_TURN;
+				cout << "You may only take ";
+				if(maxThisTurn == 0 || maxThisTurn == 1)
+				{
+					cout << "1 chip";
+				}
+				else
+				{
+					cout << "up to " << maxThisTurn << " chips";
+				}
+				
+				
+				cout << " this turn.\nHow many would you like?\n";
+				cin >> chipsTaken;
+				
+		} while((chipsTaken > maxThisTurn || chipsTaken <= 0) && chipsInPile > 1);
+		
+		chipsInPile -= chipsTaken;
+		if(chipsInPile == 0)
+		{
+			gameOver = true;
+		}
+		else
+		{
+			cout << "There are " << chipsInPile << " left in the pile.\n";
+			player1Turn = !player1Turn;
+		}
+	}
+	
+	cout << "There are no more chips left in the pile!\n\n\n\n";
+	
+	if(player1Turn)
+	{
+		cout << "Congrats! " << playerName[1] << " is the Winner!\n\n";
 	}
 	else
 	{
-		cout << playerName[1] << "'s Turn\n";
+		cout << "Congrats! " << playerName[0] << " is the Winner!\n\n";
+		
 	}
-	maxThisTurn = chipsInPile * MAX_TURN;
-	cout << "You may only take up to " << maxThisTurn << " chips this turn.\nHow many would you like?\n";
-	cin >> chipsTaken;
 	
 	
+	cout << "Thanks for Playing!\n\n";
+	
+	system("pause");
 //	randomTake = (rand() % maxThisTurn) + 1;
 //	cout << "A Random Take of " << randomTake << " chips.\n";
 	
