@@ -97,8 +97,6 @@ int main() {
 	cout << "Thanks for Playing!\n\n";
 	
 	system("pause");
-//	randomTake = (rand() % maxThisTurn) + 1;
-//	cout << "A Random Take of " << randomTake << " chips.\n";
 	
 	
 	return 0;
